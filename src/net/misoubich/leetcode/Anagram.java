@@ -1,4 +1,4 @@
-package net.misoubich;
+package net.misoubich.leetcode;
 
 import java.util.Map;
 import java.util.stream.Collectors;
