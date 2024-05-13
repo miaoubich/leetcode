@@ -34,7 +34,7 @@ public class RomaToInteger {
 		int result = 0;
 		if (1 <= s.length() && s.length() <= 15) {
 			for (int i = 0; i < s.length(); i++) {
-				if (map.containsKey(s.charAt(i))) {
+				if (map.containsKey(s.charAt(i))) {//XIX
 					if (i > 0 && map.get(s.charAt(i)) > map.get(s.charAt(i - 1)))
 						result += map.get(s.charAt(i)) - 2 * map.get(s.charAt(i - 1));
 					else

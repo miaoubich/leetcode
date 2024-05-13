@@ -33,14 +33,4 @@ public class GroupAnagram {
 
 		return new ArrayList<>(map.values());
 	}
-
-	public boolean anagram(String s, String t) {
-		Map<Character, Long> sMap = s.chars().asLongStream().mapToObj(s1 -> (char) s1)
-				.collect(Collectors.groupingBy(s1 -> s1, Collectors.counting()));
-		Map<Character, Long> tMap = t.chars().asLongStream().mapToObj(t1 -> (char) t1)
-				.collect(Collectors.groupingBy(t1 -> t1, Collectors.counting()));
-
-		return sMap.equals(tMap);
-
-	}
 }
