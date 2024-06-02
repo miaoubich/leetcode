@@ -14,7 +14,7 @@ public class Main {
 				new Student(2, "Darin", "Bouzar", 26, "Female", "Computer Engineering", 2024, "Split", 67),
 				new Student(3, "Lina", "Bouzar", 25, "Female", "Computer Engineering", 2022, "Dobrovnik", 164),
 				new Student(4, "Ivan", "Prozuvic", 30, "Male", "Information Technology", 2017, "Zagreb", 116),
-				new Student(5, "Dani", "Ali", 23, "Male", "Instrumentation Engineering", 2022, "Split", 19),
+				new Student(5, "Dani", "Amine", 23, "Male", "Instrumentation Engineering", 2022, "Split", 19),
 				new Student(6, "Sali", "Salim", 24, "Female", "Mechanical Engineering", 2023, "Zadar", 100),
 				new Student(7, "Nawel", "Chaouche", 26, "Female", "Electronics Engineering", 2014, "Zagreb", 221),
 				new Student(8, "Ismail", "Lake", 31, "Male", "Computer Engineering", 2014, "Zagreb", 523),
@@ -55,6 +55,13 @@ public class Main {
 		
 		//7.  Find the average age of male and female students.
 		Map<String, Double> avg = students.stream().collect(Collectors.groupingBy(Student::getGender, Collectors.averagingInt(Student::getAge)));
-		avg.forEach((k,v)->System.out.println(k+": "+v));
+//		avg.forEach((k,v)->System.out.println(k+": "+v));
+		
+		//8. Find the youngest student in all departments.
+		Student young = students.stream().filter(s->s.getAge()==students.stream().mapToInt(Student::getAge).min().getAsInt()).findFirst().get();
+		System.out.println("Youngest Student is: " + young);
+		
+		//9. Find the youngest studentByName by department
+		
 	}
 }
