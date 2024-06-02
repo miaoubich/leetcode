@@ -58,16 +58,18 @@ public class Main {
 //		avg.forEach((k,v)->System.out.println(k+": "+v));
 		
 		//8. Find the youngest student in all departments.
-		Student young = students.stream().filter(s->s.getAge()==students.stream().mapToInt(Student::getAge).min().getAsInt()).findFirst().get();
+		//Student young = students.stream().filter(s->s.getAge()==students.stream().mapToInt(Student::getAge).min().getAsInt()).findFirst().get();
+		//or
+		Student young = students.stream().min(Comparator.comparing(Student::getAge)).get();
 //		System.out.println("Youngest Student is: " + young);
 		
 		//9. Find the youngest studentByName by department
 		Map<String, List<Student>> youngestStudentByDepartment = students.stream().collect(
 																Collectors.groupingBy(Student::getDepartmentName));
-		youngestStudentByDepartment.forEach((k,v)->{
-			int minAge = v.stream().mapToInt(Student::getAge).min().getAsInt();
-			System.out.println(k+": "+minAge);
-		});
+//		youngestStudentByDepartment.forEach((k,v)->{
+//			int minAge = v.stream().mapToInt(Student::getAge).min().getAsInt();
+//			System.out.println(k+": "+minAge);
+//		});
 		//or
 		Map<String, Integer> youngestStudentByDepartment1 = students.stream()
 		        .collect(Collectors.groupingBy(Student::getDepartmentName,
@@ -75,8 +77,11 @@ public class Main {
 		                        Collectors.minBy(Comparator.comparingInt(Student::getAge)),
 		                        youngestStudent -> youngestStudent.map(Student::getAge).orElse(0))));
 
-		youngestStudentByDepartment1.forEach((department, minAge) ->
-		        System.out.println(department + ": " + minAge));
+//		youngestStudentByDepartment1.forEach((department, minAge) ->
+//		        System.out.println(department + ": " + minAge));
+		
+//		10. Find the senior female student in all departments.
+		
 
 	}
 }
