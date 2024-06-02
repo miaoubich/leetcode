@@ -1,9 +1,9 @@
 package net.misoubich.stream;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -59,9 +59,24 @@ public class Main {
 		
 		//8. Find the youngest student in all departments.
 		Student young = students.stream().filter(s->s.getAge()==students.stream().mapToInt(Student::getAge).min().getAsInt()).findFirst().get();
-		System.out.println("Youngest Student is: " + young);
+//		System.out.println("Youngest Student is: " + young);
 		
 		//9. Find the youngest studentByName by department
-		
+		Map<String, List<Student>> youngestStudentByDepartment = students.stream().collect(
+																Collectors.groupingBy(Student::getDepartmentName));
+		youngestStudentByDepartment.forEach((k,v)->{
+			int minAge = v.stream().mapToInt(Student::getAge).min().getAsInt();
+			System.out.println(k+": "+minAge);
+		});
+		//or
+		Map<String, Integer> youngestStudentByDepartment1 = students.stream()
+		        .collect(Collectors.groupingBy(Student::getDepartmentName,
+		                Collectors.collectingAndThen(
+		                        Collectors.minBy(Comparator.comparingInt(Student::getAge)),
+		                        youngestStudent -> youngestStudent.map(Student::getAge).orElse(0))));
+
+		youngestStudentByDepartment1.forEach((department, minAge) ->
+		        System.out.println(department + ": " + minAge));
+
 	}
 }
