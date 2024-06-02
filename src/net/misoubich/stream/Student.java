@@ -14,7 +14,6 @@ public class Student {
 
 	 public Student(int id, String firstName, String lastName, int age, String gender, String departmentName,
 	   int joinedYear, String city, int rank) {
-	  super();
 	  this.id = id;
 	  this.firstName = firstName;
 	  this.lastName = lastName;

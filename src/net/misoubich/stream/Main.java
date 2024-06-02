@@ -10,16 +10,16 @@ public class Main {
 
 	public static void main(String[] args) {
 		List<Student> students = Arrays.asList(
-				new Student(1, "Aditya", "Mall", 30, "Male", "Mechanical Engineering", 2014, "Mumbai", 122),
-				new Student(2, "Pulkith", "Singh", 26, "Male", "Computer Engineering", 2018, "Delhi", 67),
-				new Student(3, "Ankita", "Patil", 25, "Female", "Computer Engineering", 2019, "Kerala", 164),
-				new Student(4, "Satish", "Malaghan", 30, "Male", "Mechanical Engineering", 2014, "Kerala", 26),
-				new Student(5, "Darshan", "Mukd", 23, "Male", "Instrumentation Engineering", 2022, "Mumbai", 12),
-				new Student(6, "Chetan", "Star", 24, "Male", "Mechanical Engineering", 2023, "Karnataka", 90),
-				new Student(7, "Arun", "Vittal", 26, "Male", "Electronics Engineering", 2014, "Karnataka", 324),
-				new Student(8, "Nam", "Dev", 31, "Male", "Computer Engineering", 2014, "Karnataka", 433),
-				new Student(9, "Sonu", "Shankar", 27, "Female", "Computer Engineering", 2018, "Karnataka", 7),
-				new Student(10, "Satyam", "Pandey", 26, "Male", "Biotech Engineering", 2017, "Mumbai", 98));
+				new Student(1, "Ali", "Bouzar", 30, "Male", "System Information", 2017, "Korcula", 12),
+				new Student(2, "Darin", "Bouzar", 26, "Female", "Computer Engineering", 2024, "Split", 67),
+				new Student(3, "Lina", "Bouzar", 25, "Female", "Computer Engineering", 2022, "Dobrovnik", 164),
+				new Student(4, "Ivan", "Prozuvic", 30, "Male", "Information Technology", 2017, "Zagreb", 116),
+				new Student(5, "Dani", "Ali", 23, "Male", "Instrumentation Engineering", 2022, "Split", 19),
+				new Student(6, "Sali", "Salim", 24, "Female", "Mechanical Engineering", 2023, "Zadar", 100),
+				new Student(7, "Nawel", "Chaouche", 26, "Female", "Electronics Engineering", 2014, "Zagreb", 221),
+				new Student(8, "Ismail", "Lake", 31, "Male", "Computer Engineering", 2014, "Zagreb", 523),
+				new Student(9, "Kamel", "Shanfara", 27, "Male", "Computer Engineering", 2020, "Korcula", 17),
+				new Student(10, "Rami", "Dan", 26, "Male", "Information Technology", 2017, "Split", 198));
 		
 		
 		//1. Group the students by department names.
