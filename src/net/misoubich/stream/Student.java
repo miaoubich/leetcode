@@ -1,5 +1,7 @@
 package net.misoubich.stream;
 
+import java.util.Objects;
+
 public class Student {
 
 	 private int id;
@@ -95,6 +97,27 @@ public class Student {
 
 	 public void setRank(int rank) {
 	  this.rank = rank;
+	 }
+	 
+	 @Override
+	    public boolean equals(Object o) {
+	        if (this == o) return true;
+	        if (o == null || getClass() != o.getClass()) return false;
+	        Student student = (Student) o;
+	        return id == student.id &&
+	               age == student.age &&
+	               joinedYear == student.joinedYear &&
+	               rank == student.rank &&
+	               Objects.equals(firstName, student.firstName) &&
+	               Objects.equals(lastName, student.lastName) &&
+	               Objects.equals(gender, student.gender) &&
+	               Objects.equals(departmentName, student.departmentName) &&
+	               Objects.equals(city, student.city);
+	    }
+
+	    @Override
+	 public int hashCode() {
+		 return Objects.hash(id, firstName, lastName, age, gender, departmentName, joinedYear, city, rank);
 	 }
 
 	 @Override

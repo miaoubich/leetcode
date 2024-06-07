@@ -45,9 +45,11 @@ public class Main {
 		
 //		2. Write a program to find the longest string in a list of strings using streams.
 		String longestString = Arrays.stream(animals).max(Comparator.comparingInt(String::length)).get();
+		//or
+		String longestString2 = Arrays.stream(animals).max((s1,s2)->Integer.compare(s1.length(),s2.length())).get();
 //		System.out.println(longestString);
 		
-//		3. Remove duplicates and keep them in the descending order using streams.
+//		3. Remove duplicates and keep the words in the descending order using streams.
 		List<String> descendSorted = Arrays.stream(animals).distinct()
 														   .sorted((a1,a2)->a2.compareTo(a1))
 														   .collect(Collectors.toList());
