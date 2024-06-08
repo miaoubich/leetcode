@@ -17,6 +17,8 @@ public class Main {
 	public static void main(String[] args) {
 		String[] animals = { "cat", "mice", "cat", "dog", "tiger", "cat", "mice", "tiger", "mice", "cat", "lion",
 				"elephant" };
+		String[] animals2 = { "cat", "pat", "dog", "Girafa", "patterfly" };
+		String[] fruits = { "Orange", "dattes", "Apple", "banana", "kiwi", "apricot", "avocado" };
 
 //		1. Calculate the frequency of each word and sort them from the most frequent to the less frequent,
 //         if two words have the same frequency sort them in descending order
@@ -79,16 +81,59 @@ public class Main {
 //		7. Write a program to find the first non-repeating character in a string using streams.
 		String word = "crocodile";
 //		System.out.println(returnFirstNonRepeatingChar(word));
-		Character firstNonRepeatingChar = word.chars().asLongStream().mapToObj(c->(char)c)
+		Character firstNonRepeatingChar = word.chars().asLongStream().mapToObj(c -> (char) c)
 				.collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
-				.entrySet()
-				.stream()
-				.filter(en->en.getValue()==1L)
-				.map(Map.Entry::getKey)
-				.findFirst()
-				.get();
-		System.out.println(firstNonRepeatingChar);
+				.entrySet().stream().filter(en -> en.getValue() == 1L).map(Map.Entry::getKey).findFirst().get();
+//		System.out.println(firstNonRepeatingChar);
+
+//		8. Given a list of strings, replace a specific character with another char using streams.
+		char charTobeRemoved = 'a';
+		char newChar = 'i';
+		List<String> wordsWithoutA = Arrays.stream(animals2).map(w -> w.replace(charTobeRemoved, newChar)).toList();
+//        wordsWithoutA.forEach(System.out::println);
+
+//      9. Given a list of strings, remove all strings that contain a specific character using streams.
+		char c = 'a';
+		List<String> newList = Arrays.stream(animals2).filter(w -> !w.contains(String.valueOf(c)))
+				.collect(Collectors.toList());
+//        newList.forEach(System.out::println);
+
+//      10. Given a list of integers, partition them into two groups: odd and even, using streams.
+		Map<Boolean, List<Integer>> oddEvenNumbers = list.stream().collect(Collectors.partitioningBy(n -> n % 2 == 0));
+//        System.out.println(oddEvenNumbers);
+
+//      11. Given an array of integers, find the kth largest element.
+		int k = 3;
+		int kThLargestNumber = list1.stream().sorted(Comparator.comparing(Integer::intValue).reversed()).skip(k - 1)
+				.findFirst().get();
+		// or
+		int kThLargestNumber1 = list1.stream().sorted(Comparator.reverseOrder()).skip(k - 1).findFirst().get();
+//        System.out.println(kThLargestNumber1);
+
+//      12. Write a program to perform cube on list elements and filter numbers greater than 50
+		List<Double> cubeList = list1.stream().map(n -> Math.pow(n, 3)).filter(n -> n > 50).toList();
+//        System.out.println(cubeList);
+
+//      13. Given a list of strings, find the count of strings starting with a vowels.
+		char[] vowels = { 'a', 'e', 'r', 'o', 'u' };
+		long startsWithVowel = Arrays.stream(fruits).filter(f -> {
+			for (char c1 : vowels)
+				if (f.toLowerCase().startsWith(String.valueOf(c1)))
+					return true;
+			return false;
+		}).count();
+//		System.out.println(startsWithVowel);
 		
+//		14.Given a list of strings, find the longest palindrome string.
+		List<String> things = List.of("level", "hello", "radar", "world", "madam", "java", "Malayalam");
+		String longestPalindrom = things.stream().filter(s-> new StringBuilder(s).reverse().toString().equalsIgnoreCase(s))
+				  .max(Comparator.comparing(String::length)).get();
+//		System.out.println(longestPalindrom);
+		
+//		15. Given a list of integers, find the product of all non-negative integers.
+		List<Integer> ints = List.of(-5,3,-6,2,3,-1,4);
+		Long product = ints.stream().filter(n->n>0).reduce(1, (a,b)->a*b).longValue();
+		System.out.println(product);
 	}
 
 	public static Character returnFirstNonRepeatingChar(String word) {
@@ -101,4 +146,5 @@ public class Main {
 		}
 		return '\0';
 	}
+	
 }
