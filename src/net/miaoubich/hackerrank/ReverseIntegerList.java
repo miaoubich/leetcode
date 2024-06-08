@@ -1,4 +1,4 @@
-package net.misoubich.hackerrank;
+package net.miaoubich.hackerrank;
 
 import java.util.ArrayList;
 import java.util.Arrays;

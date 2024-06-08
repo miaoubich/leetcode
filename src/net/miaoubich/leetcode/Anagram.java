@@ -1,4 +1,4 @@
-package net.misoubich.leetcode;
+package net.miaoubich.leetcode;
 
 import java.util.Map;
 import java.util.function.Function;
