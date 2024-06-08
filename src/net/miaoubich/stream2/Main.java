@@ -1,4 +1,4 @@
-package net.misoubich.stream2;
+package net.miaoubich.stream2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,6 +87,7 @@ public class Main {
 				.map(Map.Entry::getKey)
 				.findFirst()
 				.get();
+		System.out.println(firstNonRepeatingChar);
 		
 	}
 

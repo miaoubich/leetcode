@@ -1,4 +1,4 @@
-package net.misoubich.other;
+package net.miaoubich.other;
 
 public class RemoveTextBetweenBrackets {
 

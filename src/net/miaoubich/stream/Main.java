@@ -1,4 +1,4 @@
-package net.misoubich.stream;
+package net.miaoubich.stream;
 
 import java.util.Arrays;
 import java.util.Collection;
