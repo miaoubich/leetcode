@@ -5,11 +5,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class StringCharactersByFrequency {
 
 	public static void main(String[] args) {
-        String input = "amandawoman";//anmwod
+        String input = "linagonina";//anmwod
 
         stringFrequency(input);
     }
@@ -21,6 +23,8 @@ public class StringCharactersByFrequency {
         for(char c : input.toCharArray()){
             map.put(c, map.getOrDefault(c, 0) + 1);
         }
+        //or
+        Map<Character, Long> map1 = input.chars().asDoubleStream().mapToObj(c->(char)c).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
         // Sort the characters by frequency
         List<Character> charsList = new ArrayList<>(map.keySet());

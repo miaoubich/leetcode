@@ -5,12 +5,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class GroupAnagram {
 
 	public static void main(String[] args) {
-		String[] list = { "eat", "tea", "tan", "ate", "nat", "bat" };
+		String[] list = { "eat", "tea", "tan", "ate", "nat", "bat"};
 
 		System.out.println(groupAnagrams(list));
 	}
