@@ -2,6 +2,7 @@ package net.miaoubich.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,7 @@ public class TopKFrequent {
 				                               //wrapper objects (like Stream<Integer>, Stream<Long>, Stream<Double>).
 				                       .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 		List<Integer> keys = new ArrayList<>(map.keySet());
+		Collections.sort(keys, (k1, k2) -> Long.compare(map.get(k2), map.get(k1)));
 		
 		return keys.stream().mapToInt(i->i).limit(k).toArray();
 	}
