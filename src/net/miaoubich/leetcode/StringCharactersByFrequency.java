@@ -1,9 +1,10 @@
 package net.miaoubich.leetcode;
 
 import java.util.ArrayList;
-
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -16,14 +17,26 @@ public class StringCharactersByFrequency {
 	public static void main(String[] args) {
         String input = "linagonina";//niaolg
 
-        System.out.println(stringFrequency(input));
+//        System.out.println(stringFrequency1(input));
+        stringFrequency(input);
     }
 	
-	public static String stringFrequency(String s) {
+	public static void stringFrequency(String s) {
+		StringBuilder sb = new StringBuilder();
+		
+		s.chars().asDoubleStream()
+		         .mapToObj(c->(char)c)
+		         .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+		         .entrySet()
+		         .stream()
+		         .sorted(Map.Entry.<Character, Long>comparingByValue(Comparator.reverseOrder())
+		        		 .thenComparing(Map.Entry.comparingByKey(Comparator.reverseOrder())))
+		         .forEach(e->System.out.print(e.getKey()));
+	}
+	public static String stringFrequency1(String s) {
 		StringBuilder sb = new StringBuilder();
 		Map<Character, Long> map = s.chars().asDoubleStream().mapToObj(c->(char)c)
 		                          .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-//		map.forEach((k,v)->System.out.println(k+", "+v));
 		
 		List<Character> keys = new ArrayList<>(map.keySet());
 		Collections.sort(keys, (a, b)->{
@@ -40,7 +53,7 @@ public class StringCharactersByFrequency {
 		return sb.toString();
 	}
 
-	public static void stringFrequency1(String input) {
+	public static void stringFrequency2(String input) {
         Map<Character, Integer> map = new HashMap<>();
         
         // Count the frequency of each character

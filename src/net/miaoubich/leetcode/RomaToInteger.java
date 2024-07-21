@@ -6,7 +6,7 @@ import java.util.Map;
 public class RomaToInteger {
 
 	public static void main(String[] args) {
-		System.out.println(romanToInt("XIX"));
+		System.out.println(romanToInt("IV"));
 		System.out.println(romanToInt("XIXDLCD"));
 		System.out.println(romanToInt("XIXLMCM"));
 	}
@@ -44,4 +44,5 @@ public class RomaToInteger {
 		}
 		return result;
 	}
+
 }

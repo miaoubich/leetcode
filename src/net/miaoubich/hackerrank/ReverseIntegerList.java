@@ -15,17 +15,27 @@ public class ReverseIntegerList {
 		Integer[] arr = { 5, 4, 3, 2, 1 };
 		List<Integer> list = new ArrayList<>(Arrays.asList(arr));
 
-//		System.out.println(reverseList(list));
+		System.out.println(reverseList(list));
 //		System.out.println(Arrays.toString(reverseArray(arr)));
 //		System.out.println("Print original list: ");
 //		System.out.println(Arrays.toString(listToArrayReversed(list)));
 //		System.out.println(ArrayToListRevers(arr));
-		System.out.println(Arrays.toString(reverseArrray(arr)));
+//		System.out.println(Arrays.toString(reverseArrray(arr)));
 
 	}
 
 	public static List<Integer> reverseList(List<Integer> l) {
 		Collections.reverse(l);
+		int min = Collections.min(l);
+		int max = Collections.max(l);
+		
+		String s = new String("Ali");
+		System.out.println(s.trim());
+		
+		Collections.rotate(l, 1);
+		
+		System.out.println("min: " + min);
+		System.out.println("max: " + max);
 		return l;
 	}
 

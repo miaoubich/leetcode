@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -26,7 +27,7 @@ public class TopKFrequent {
 				                       .boxed()//The boxed() method in Java is used to convert a stream of primitive data types 
 				                               //(like IntStream, LongStream, DoubleStream) to a stream of their corresponding 
 				                               //wrapper objects (like Stream<Integer>, Stream<Long>, Stream<Double>).
-				                       .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+				                       .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()));
 		List<Integer> keys = new ArrayList<>(map.keySet());
 		Collections.sort(keys, (k1, k2) -> Long.compare(map.get(k2), map.get(k1)));
 		
