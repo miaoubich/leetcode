@@ -3,10 +3,12 @@ package net.miaoubich.stream2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -14,8 +16,7 @@ import java.util.stream.Collectors;
 public class Stream2 {
 
 	public static void main(String[] args) {
-		String[] animals = { "cat", "mice", "cat", "dog", "tiger", "cat", "mice", "tiger", "mice", "cat", "lion",
-				"elephant" };
+		String[] animals = { "cat", "mice", "cat", "dog", "tiger", "cat", "mice", "elephant", "tiger", "mice", "cat", "lion"};
 		String[] animals2 = { "cat", "pat", "dog", "Girafa", "patterfly" };
 		String[] fruits = { "Orange", "dattes", "Apple", "banana", "kiwi", "apricot", "avocado" };
 
@@ -24,7 +25,9 @@ public class Stream2 {
 
 //		System.out.println(stringFrequency(animals));
 
-		stringFrequencyJava8("linagonina");
+//		stringFrequencyJava8("linagonina");
+		
+		System.out.println(longestStringinList(animals).get());
 	}
 
 //	1. Sort the animals from the highest frequent to the lowest frequent in java8
@@ -84,4 +87,8 @@ public class Stream2 {
 		System.out.println(sb.toString());
 	}
 
+	//4. Q. Find the longest string in a list of strings using Java streams:
+	private static Optional<String> longestStringinList(String[] arr) {
+		return Arrays.stream(arr).max(Comparator.comparingInt(String::length));
+	}
 }
